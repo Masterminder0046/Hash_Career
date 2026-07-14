@@ -21,7 +21,7 @@ export const signup = async (req: Request, res: Response, next: NextFunction) =>
       return res.status(400).json({ success: false, message: 'Email already registered' });
     }
 
-    const userRole = role === UserRole.OFFICER || role === UserRole.ADMIN ? role : UserRole.STUDENT;
+    const userRole = UserRole.STUDENT;
     const user = await User.create({ email, password, name, role: userRole });
 
     if (userRole === UserRole.STUDENT) {
