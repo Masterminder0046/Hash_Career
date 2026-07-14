@@ -51,6 +51,9 @@ export const geminiGenerate = async (prompt: string): Promise<string> => {
 
 const geminiFallback = (prompt: string): string => {
   const lower = prompt.toLowerCase();
+  if (lower.includes('chatbot') || lower.includes('career advisor')) {
+    return 'Based on your profile, I recommend focusing on Data Structures and Algorithms. Start with arrays and strings, then move to trees and graphs. Practice on LeetCode daily and build projects using the MERN stack.';
+  }
   if (lower.includes('ats score') || lower.includes('resume')) {
     // Extract the raw resume text from the prompt
     let resumeText = '';
