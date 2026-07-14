@@ -88,15 +88,6 @@ export default function LoginPage() {
           Sign Up
         </Link>
       </p>
-
-      <div className="glass-card p-4">
-        <p className="text-xs text-slate-400 font-medium mb-2">Demo Credentials</p>
-        <div className="space-y-1 text-xs text-slate-500">
-          <p>Admin: admin@placement.edu.in / admin123</p>
-          <p>Officer: officer@placement.edu.in / officer123</p>
-          <p>Student: student1@college.edu.in / student123</p>
-        </div>
-      </div>
     </div>
   );
 }
