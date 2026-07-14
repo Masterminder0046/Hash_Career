@@ -25,7 +25,7 @@ const getModel = async (): Promise<GenerativeModel | null> => {
   if (key && key !== currentApiKey) {
     currentApiKey = key;
     genAI = new GoogleGenerativeAI(key);
-    model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+    model = genAI.getGenerativeModel({ model: 'gemini-3.5-flash' });
   } else if (!key) {
     model = null as any;
     currentApiKey = '';
