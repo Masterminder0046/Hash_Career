@@ -41,7 +41,7 @@ export default function CompanyDatabase() {
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
           <input className="input-field pl-11" placeholder="Search companies..." value={search} onChange={(e) => setSearch(e.target.value)} />
         </div>
-        <select className="input-field w-auto" value={industry} onChange={(e) => setIndustry(e.target.value)}>
+        <select className="input-field w-full sm:w-auto" value={industry} onChange={(e) => setIndustry(e.target.value)}>
           <option value="">All Industries</option>
           {industries.map((ind) => <option key={ind} value={ind}>{ind}</option>)}
         </select>

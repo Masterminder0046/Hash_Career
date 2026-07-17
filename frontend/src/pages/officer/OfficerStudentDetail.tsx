@@ -39,13 +39,13 @@ export default function OfficerStudentDetail() {
       <button onClick={() => navigate(-1)} className="flex items-center gap-2 text-sm text-indigo-500 hover:underline"><ArrowLeft className="w-4 h-4" /> Back</button>
 
       <div className="glass-card p-6">
-        <div className="flex items-start gap-6">
-          <div className="w-20 h-20 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-3xl font-bold text-white">
+        <div className="flex flex-col sm:flex-row items-start gap-6">
+          <div className="w-20 h-20 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-3xl font-bold text-white flex-shrink-0">
             {(student as any).userId?.name?.charAt(0) || 'S'}
           </div>
-          <div className="flex-1">
-            <h1 className="text-2xl font-bold">{(student as any).userId?.name}</h1>
-            <p className="text-slate-400">{(student as any).userId?.email}</p>
+          <div className="flex-1 min-w-0">
+            <h1 className="text-2xl font-bold truncate">{(student as any).userId?.name}</h1>
+            <p className="text-slate-400 truncate">{(student as any).userId?.email}</p>
             <div className="flex flex-wrap gap-4 mt-3">
               <div className="flex items-center gap-1 text-sm"><BookOpen className="w-4 h-4 text-indigo-500" /> {student.academic?.department}</div>
               <div className="flex items-center gap-1 text-sm"><Award className="w-4 h-4 text-emerald-500" /> CGPA: {student.academic?.cgpa}</div>
@@ -54,9 +54,9 @@ export default function OfficerStudentDetail() {
               {student.linkedinUrl && <a href={student.linkedinUrl} target="_blank" className="flex items-center gap-1 text-sm text-slate-400 hover:text-indigo-500"><Linkedin className="w-4 h-4" /> LinkedIn</a>}
             </div>
           </div>
-          <div className="text-right">
+          <div className="sm:text-right w-full sm:w-auto border-t sm:border-t-0 pt-3 sm:pt-0 border-slate-100 dark:border-slate-800/50">
             <p className="text-sm text-slate-400">Status</p>
-            {student.isPlacementReady ? <span className="badge-success">Placement Ready</span> : <span className="badge-warning">At Risk</span>}
+            {student.isPlacementReady ? <span className="badge-success inline-block mt-1">Placement Ready</span> : <span className="badge-warning inline-block mt-1">At Risk</span>}
           </div>
         </div>
       </div>

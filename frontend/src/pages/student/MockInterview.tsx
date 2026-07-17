@@ -112,7 +112,7 @@ export default function MockInterview() {
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
           <div className="glass-card p-6">
             <h2 className="text-lg font-semibold mb-4">Select Interview Type</h2>
-            <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
               {interviewTypes.map((t) => (
                 <button key={t} onClick={() => setType(t)} className={`p-3 rounded-xl text-sm font-medium transition-all capitalize ${type === t ? 'bg-indigo-600 text-white' : 'bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600'}`}>{t}</button>
               ))}
@@ -171,7 +171,7 @@ export default function MockInterview() {
           {evaluation && (
             <div className="glass-card p-6 animate-fade-in">
               <h2 className="text-lg font-semibold mb-4">Instant Feedback</h2>
-              <div className="grid grid-cols-5 gap-2 mb-4">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 mb-4">
                 {['grammar', 'technicalAccuracy', 'confidence', 'completeness', 'communication'].map((key) => (
                   <div key={key} className="text-center p-2 bg-slate-50 dark:bg-slate-800/50 rounded-lg">
                     <p className="text-lg font-bold text-indigo-600">{evaluation[key] || 0}</p>

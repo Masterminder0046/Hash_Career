@@ -1,11 +1,21 @@
 import { useAuth } from '../../contexts/AuthContext';
 import { useTheme } from '../../contexts/ThemeContext';
-import { Moon, Sun, Bell, LogOut, Search } from 'lucide-react';
+import { Moon, Sun, Bell, LogOut, Search, Menu } from 'lucide-react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { notificationApi } from '../../services/api';
 
-export default function Header() {
+export default function Header({
+  collapsed,
+  setCollapsed,
+  sidebarOpen,
+  setSidebarOpen,
+}: {
+  collapsed: boolean;
+  setCollapsed: (c: boolean) => void;
+  sidebarOpen: boolean;
+  setSidebarOpen: (o: boolean) => void;
+}) {
   const { user, logout } = useAuth();
   const { dark, toggle } = useTheme();
   const navigate = useNavigate();
@@ -17,9 +27,16 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border-b border-slate-200/50 dark:border-slate-700/50 px-6 py-3">
+    <header className="sticky top-0 z-40 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border-b border-slate-200/50 dark:border-slate-700/50 px-4 md:px-6 py-3">
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 md:gap-4">
+          <button
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+            className="md:hidden p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+            aria-label="Toggle Sidebar"
+          >
+            <Menu className="w-5 h-5 text-slate-500" />
+          </button>
           {searchOpen ? (
             <div className="relative">
               <input

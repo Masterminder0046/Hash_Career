@@ -55,9 +55,9 @@ export default function CompanyMatching() {
               className="glass-card overflow-hidden"
             >
               <div className="p-6 cursor-pointer" onClick={() => setExpanded(expanded === match.company._id ? null : match.company._id)}>
-                <div className="flex items-center justify-between">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div className="flex items-center gap-4">
-                    <div className={`p-3 rounded-2xl ${match.eligible ? 'bg-emerald-100 dark:bg-emerald-900/20' : 'bg-red-100 dark:bg-red-900/20'}`}>
+                    <div className={`p-3 rounded-2xl flex-shrink-0 ${match.eligible ? 'bg-emerald-100 dark:bg-emerald-900/20' : 'bg-red-100 dark:bg-red-900/20'}`}>
                       {match.eligible ? <CheckCircle className="w-6 h-6 text-emerald-600" /> : <XCircle className="w-6 h-6 text-red-500" />}
                     </div>
                     <div>
@@ -65,8 +65,8 @@ export default function CompanyMatching() {
                       <p className="text-sm text-slate-400">{match.company.industry}</p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-6">
-                    <div className="text-right">
+                  <div className="flex items-center justify-between sm:justify-end gap-6 w-full sm:w-auto border-t sm:border-t-0 pt-3 sm:pt-0 border-slate-100 dark:border-slate-800/50">
+                    <div className="text-left sm:text-right">
                       <p className="text-2xl font-bold">{match.matchScore}%</p>
                       <p className="text-xs text-slate-400">Match Score</p>
                     </div>

@@ -40,7 +40,7 @@ export default function SkillGapAnalysis() {
 
       {data && (
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="stat-card text-center">
               <p className="text-3xl font-bold text-indigo-600">{data.coverage}%</p>
               <p className="text-sm text-slate-400">Skill Coverage</p>

@@ -73,12 +73,12 @@ export default function OfficerStudents() {
 
   return (
     <div className="space-y-6 animate-fade-in">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold gradient-text">Students</h1>
           <p className="text-slate-400 mt-1">View and manage student profiles</p>
         </div>
-        <button onClick={() => setShowModal(true)} className="btn-primary flex items-center gap-2">
+        <button onClick={() => setShowModal(true)} className="btn-primary flex items-center justify-center gap-2 w-full sm:w-auto">
           <Plus className="w-4 h-4" /> Add Student
         </button>
       </div>
@@ -88,7 +88,7 @@ export default function OfficerStudents() {
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
           <input className="input-field pl-11" placeholder="Search students..." value={search} onChange={(e) => setSearch(e.target.value)} />
         </div>
-        <select className="input-field w-auto" value={dept} onChange={(e) => setDept(e.target.value)}>
+        <select className="input-field w-full sm:w-auto" value={dept} onChange={(e) => setDept(e.target.value)}>
           <option value="">All Departments</option>
           {departments.map((d) => <option key={d} value={d}>{d}</option>)}
         </select>
@@ -151,7 +151,7 @@ export default function OfficerStudents() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            className="glass-card w-full max-w-2xl overflow-hidden"
+            className="glass-card w-full max-w-2xl max-h-[90vh] flex flex-col overflow-hidden"
           >
             <div className="flex items-center justify-between p-6 border-b border-slate-100 dark:border-slate-800">
               <h2 className="text-xl font-bold">Add New Student Profile</h2>
@@ -160,7 +160,7 @@ export default function OfficerStudents() {
               </button>
             </div>
             
-            <form onSubmit={handleSubmit} className="p-6 space-y-4">
+            <form onSubmit={handleSubmit} className="p-6 space-y-4 overflow-y-auto flex-1">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="text-sm text-slate-400 mb-1 block">Full Name *</label>

@@ -66,9 +66,9 @@ export default function ResumeAnalyzer() {
 
           {hasResume && (
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="glass-card p-6">
-              <div className="flex items-center justify-between mb-6">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
                 <h2 className="text-lg font-semibold">AI Analysis</h2>
-                <button onClick={handleAnalyze} disabled={analyzing} className="btn-primary flex items-center gap-2">
+                <button onClick={handleAnalyze} disabled={analyzing} className="btn-primary flex items-center justify-center gap-2 w-full sm:w-auto">
                   {analyzing ? <Loader2 className="w-4 h-4 animate-spin" /> : <Sparkles className="w-4 h-4" />}
                   {analyzing ? 'Analyzing...' : 'Analyze with AI'}
                 </button>

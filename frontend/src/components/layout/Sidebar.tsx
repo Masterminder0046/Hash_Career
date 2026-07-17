@@ -41,21 +41,33 @@ const adminLinks = [
   { to: '/notifications', icon: Bell, label: 'Notifications' },
 ];
 
-export default function Sidebar() {
+export default function Sidebar({
+  collapsed,
+  setCollapsed,
+  sidebarOpen,
+  setSidebarOpen,
+}: {
+  collapsed: boolean;
+  setCollapsed: (c: boolean) => void;
+  sidebarOpen: boolean;
+  setSidebarOpen: (o: boolean) => void;
+}) {
   const { user } = useAuth();
-  const [collapsed, setCollapsed] = useState(false);
   const links = user?.role === 'admin' ? adminLinks : user?.role === 'placement_officer' ? officerLinks : studentLinks;
 
   return (
-    <aside className={`fixed left-0 top-0 h-full bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-r border-slate-200/50 dark:border-slate-700/50 z-50 transition-all duration-300 ${collapsed ? 'w-20' : 'w-64'}`}>
+    <aside className={`fixed left-0 top-0 h-full bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-r border-slate-200/50 dark:border-slate-700/50 z-50 transition-all duration-300 ${collapsed ? 'w-20' : 'w-64'} ${sidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}>
       <div className="flex flex-col h-full">
         <div className="p-4 flex items-center justify-between border-b border-slate-200/50 dark:border-slate-700/50">
-          <NavLink to="/dashboard" className="flex items-center gap-3">
+          <NavLink to="/dashboard" className="flex items-center gap-3" onClick={() => setSidebarOpen(false)}>
             <LogoIcon className="w-9 h-9 text-indigo-600 dark:text-indigo-400 hover:scale-105 transition-transform duration-300" />
             {!collapsed && <span className="font-bold text-lg gradient-text">Hash Career</span>}
           </NavLink>
-          <button onClick={() => setCollapsed(!collapsed)} className="p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+          <button onClick={() => setCollapsed(!collapsed)} className="hidden md:block p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
             {collapsed ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
+          </button>
+          <button onClick={() => setSidebarOpen(false)} className="md:hidden p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+            <ChevronLeft className="w-4 h-4" />
           </button>
         </div>
 
@@ -65,6 +77,7 @@ export default function Sidebar() {
               key={link.to}
               to={link.to}
               end={link.to === '/dashboard'}
+              onClick={() => setSidebarOpen(false)}
               className={({ isActive }) =>
                 `flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200 group ${
                   isActive

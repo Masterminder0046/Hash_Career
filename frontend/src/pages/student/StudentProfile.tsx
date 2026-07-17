@@ -47,12 +47,12 @@ export default function StudentProfile() {
 
   return (
     <div className="max-w-4xl mx-auto space-y-8 animate-fade-in">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold gradient-text">My Profile</h1>
           <p className="text-slate-400 mt-1">Manage your academic and personal details</p>
         </div>
-        <button onClick={handleSave} disabled={saving} className="btn-primary flex items-center gap-2">
+        <button onClick={handleSave} disabled={saving} className="btn-primary flex items-center justify-center gap-2 w-full sm:w-auto">
           <Save className="w-4 h-4" /> {saving ? 'Saving...' : 'Save Changes'}
         </button>
       </div>

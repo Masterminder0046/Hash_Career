@@ -59,7 +59,7 @@ export default function RoadmapGenerator() {
       </div>
 
       <div className="glass-card p-6">
-        <div className="flex flex-col sm:flex-row gap-4 items-end">
+        <div className="flex flex-col sm:flex-row gap-4 sm:items-end">
           <div className="flex-1">
             <label className="text-sm text-slate-400 mb-1 block">Duration</label>
             <select className="input-field" value={duration} onChange={(e) => setDuration(Number(e.target.value))}>
@@ -72,7 +72,7 @@ export default function RoadmapGenerator() {
             <label className="text-sm text-slate-400 mb-1 block">Target Company (optional)</label>
             <input className="input-field" placeholder="e.g., Google, Microsoft, TCS" value={targetCompany} onChange={(e) => setTargetCompany(e.target.value)} />
           </div>
-          <button onClick={handleGenerate} disabled={generating} className="btn-primary flex items-center gap-2">
+          <button onClick={handleGenerate} disabled={generating} className="btn-primary flex items-center justify-center gap-2 w-full sm:w-auto">
             {generating ? <Loader2 className="w-4 h-4 animate-spin" /> : <Map className="w-4 h-4" />}
             Generate Roadmap
           </button>
@@ -110,12 +110,12 @@ export default function RoadmapGenerator() {
           <button onClick={() => setSelected(null)} className="text-sm text-indigo-500 hover:underline">&larr; Back to roadmaps</button>
 
           <div className="glass-card p-6">
-            <div className="flex items-center justify-between mb-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
               <div>
                 <h2 className="text-xl font-bold">{selected.duration}-Day Preparation Roadmap</h2>
                 {selected.targetCompany && <p className="text-sm text-indigo-500">Targeting: {selected.targetCompany}</p>}
               </div>
-              <div className="text-right">
+              <div className="text-left sm:text-right border-t sm:border-t-0 pt-3 sm:pt-0 border-slate-100 dark:border-slate-800/50">
                 <p className="text-2xl font-bold text-indigo-600">{selected.progress}%</p>
                 <p className="text-xs text-slate-400">Complete</p>
               </div>
@@ -127,9 +127,9 @@ export default function RoadmapGenerator() {
 
           {selected.weeks.map((week, i) => (
             <div key={i} className="glass-card p-6">
-              <div className="flex items-center justify-between mb-4">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
                 <div className="flex items-center gap-3">
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold ${
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold flex-shrink-0 ${
                     selected.completedWeeks.includes(week.week) ? 'bg-emerald-500' : 'bg-indigo-500'
                   }`}>
                     {selected.completedWeeks.includes(week.week) ? <CheckCircle className="w-5 h-5" /> : week.week}
@@ -140,7 +140,7 @@ export default function RoadmapGenerator() {
                   </div>
                 </div>
                 {!selected.completedWeeks.includes(week.week) && (
-                  <button onClick={() => handleWeekComplete(selected._id, week.week)} className="btn-outline text-sm py-2">
+                  <button onClick={() => handleWeekComplete(selected._id, week.week)} className="btn-outline text-sm py-2 w-full sm:w-auto text-center">
                     Mark Complete
                   </button>
                 )}
